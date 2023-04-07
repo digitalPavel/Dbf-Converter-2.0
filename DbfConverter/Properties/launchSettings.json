@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "DbfConverter": {
+      "commandName": "Project",
+      "commandLineArgs": "dotnet run C:\\Users\\p.gayevsky\\Documents\\SomeProjects\\DbfConverter\\DbfConverter\\JUL13_21.dbf"
+    }
+  }
+}
