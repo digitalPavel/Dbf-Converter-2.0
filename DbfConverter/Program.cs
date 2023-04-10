@@ -20,12 +20,12 @@ public class Programs
         byte[] headerBytes = convertDbf.ReturnHeaderInBytes(dbfPath, allBytes);
         ArrayList descipList = convertDbf.ReturnDiscriptorsForEachHeader(headerBytes);
 
-        //JsonOutput
+        //Json Output
         BuildJson buildJson = new BuildJson();
         string json = buildJson.ReturnJson(descipList, allBytes);
         Console.WriteLine(json);
 
-        //TableOutput
+        //Table Output
         BuildTable buildtable = new BuildTable();
         DataTable table = buildtable.ReturnTable(descipList, allBytes);
 
