@@ -28,35 +28,6 @@ public class Programs
         //Table Output
         BuildTable buildtable = new BuildTable();
         DataTable table = buildtable.ReturnTable(descipList, allBytes);
-
-        //using (StreamWriter file = new StreamWriter(@"C:\Users\p.gayevsky\Documents\SomeProjects\DbfConverter\DbfConverter\testTable.txt"))
-        //{
-        //    // Write the header row
-        //    for (int i = 0; i < table.Columns.Count; i++)
-        //    {
-        //        file.Write(table.Columns[i].ColumnName);
-        //        if (i < table.Columns.Count - 1)
-        //        {
-        //            file.Write(",");
-        //        }
-        //    }
-        //    file.WriteLine();
-
-        //    // Write the data rows
-        //    foreach (DataRow row in table.Rows)
-        //    {
-        //        for (int i = 0; i < table.Columns.Count; i++)
-        //        {
-        //            file.Write(row[i].ToString());
-        //            if (i < table.Columns.Count - 1)
-        //            {
-        //                file.Write(",");
-        //            }
-        //        }
-        //        file.WriteLine();
-        //    }
-        //}
-
     }
 }
 
