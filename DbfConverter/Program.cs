@@ -3,7 +3,7 @@ using System.Collections;
 using System.Data;
 using DbfConverterImplementation;
 
-namespace DbfConverter;
+namespace DbfConverter; 
 
 public class Programs
 {
@@ -11,8 +11,8 @@ public class Programs
     {
         // Get the path of the DBF file from the command line arguments
         string dbfPath = args[2];
-    
-        BuildJsonAndTable convertDbf = new BuildJsonAndTable();
+
+        DbfInBytes convertDbf = new DbfInBytes();
 
         // Read the contents of the DBF file into a byte array
         byte[] allBytes = convertDbf.ReturnFileInBytes(dbfPath);
@@ -21,38 +21,41 @@ public class Programs
         ArrayList descipList = convertDbf.ReturnDiscriptorsForEachHeader(headerBytes);
 
         //JsonOutput
-        string json = convertDbf.ReturnJson(descipList, allBytes);
+        BuildJson buildJson = new BuildJson();
+        string json = buildJson.ReturnJson(descipList, allBytes);
+        Console.WriteLine(json);
 
         //TableOutput
-        //Write table to file
-        DataTable table = convertDbf.ReturnTable(descipList, allBytes);
-        using (StreamWriter file = new StreamWriter(@"C:\Users\p.gayevsky\Documents\SomeProjects\DbfConverter\DbfConverter\testTable.txt"))
-        {
-            // Write the header row
-            for (int i = 0; i < table.Columns.Count; i++)
-            {
-                file.Write(table.Columns[i].ColumnName);
-                if (i < table.Columns.Count - 1)
-                {
-                    file.Write(",");
-                }
-            }
-            file.WriteLine();
+        BuildTable buildtable = new BuildTable();
+        DataTable table = buildtable.ReturnTable(descipList, allBytes);
 
-            // Write the data rows
-            foreach (DataRow row in table.Rows)
-            {
-                for (int i = 0; i < table.Columns.Count; i++)
-                {
-                    file.Write(row[i].ToString());
-                    if (i < table.Columns.Count - 1)
-                    {
-                        file.Write(",");
-                    }
-                }
-                file.WriteLine();
-            }
-        }
+        //using (StreamWriter file = new StreamWriter(@"C:\Users\p.gayevsky\Documents\SomeProjects\DbfConverter\DbfConverter\testTable.txt"))
+        //{
+        //    // Write the header row
+        //    for (int i = 0; i < table.Columns.Count; i++)
+        //    {
+        //        file.Write(table.Columns[i].ColumnName);
+        //        if (i < table.Columns.Count - 1)
+        //        {
+        //            file.Write(",");
+        //        }
+        //    }
+        //    file.WriteLine();
+
+        //    // Write the data rows
+        //    foreach (DataRow row in table.Rows)
+        //    {
+        //        for (int i = 0; i < table.Columns.Count; i++)
+        //        {
+        //            file.Write(row[i].ToString());
+        //            if (i < table.Columns.Count - 1)
+        //            {
+        //                file.Write(",");
+        //            }
+        //        }
+        //        file.WriteLine();
+        //    }
+        //}
 
     }
 }

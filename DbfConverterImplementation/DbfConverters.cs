@@ -5,9 +5,8 @@ using System.Text;
 
 namespace DbfConverterImplementation;
 
-public class BuildJsonAndTable: DbfInBytes
+public class BuildJson
 {
-
     // Build the JSON string base on list of descriptors
     public string ReturnJson(ArrayList descipList, byte[] allBytes)
     {
@@ -77,6 +76,10 @@ public class BuildJsonAndTable: DbfInBytes
 
         return jsonString.ToString();
     }
+}
+public class BuildTable
+{
+    // Build the Table base on list of descriptors
     public DataTable ReturnTable(ArrayList descipList, byte[] allBytes)
     {
         //Size of the table header in bytes
@@ -176,5 +179,6 @@ public class BuildJsonAndTable: DbfInBytes
                 return value;
         }
     }
-
 }
+   
+
