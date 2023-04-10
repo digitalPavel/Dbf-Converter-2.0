@@ -10,7 +10,7 @@ public class Programs
     public static void Main(string[] args)
     {
         // Get the path of the DBF file from the command line arguments
-        string dbfPath = args[2];
+        string dbfPath = args[1];
 
         DbfInBytes convertDbf = new DbfInBytes();
 
